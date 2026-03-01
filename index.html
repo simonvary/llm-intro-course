@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>LLM Introduction Course (LASR, Oxford)</title>
+  <meta name="description" content="A short, code-first introduction to LLMs for DPhil students from LASR CDT at the Mathematical Institute, Oxford."/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<header>
+  <div class="container bar">
+    <div>
+      <div class="title">LLM Introduction Course (LASR @ MI, University of Oxford)</div>
+      <!-- <div class="subtitle">4 × 2-hour sessions • 60 min lecture + 60 min lab • CPU-first</div> -->
+    </div>
+    <nav aria-label="Page navigation">
+      <a href="#overview">Home</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#lectures">Lectures</a>
+      <!-- <a href="#logistics">Logistics</a> -->
+      <a href="#sources">References</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section id="overview">
+    <h1>Hands-on introduction to LLMs</h1>
+    <p>
+      A short four-week introduction to how modern decoder-only LLMs work end-to-end. Students will build a minimal GPT step by step and experiment with open-weight models to understand architecture design choices and post-training objectives. Lectures take an implementation-first approach and include guided coding exercises in PyTorch.
+    </p>
+    <!-- <div class="chips" aria-label="Course highlights">
+      <div class="chip"><span class="dot"></span><strong>Notation</strong> \(x_{1:T}\), \(p(x_t|x_{<t})\), NLL, PPL</div>
+      <div class="chip"><span class="dot"></span><strong>One repo</strong> evolves weekly</div>
+      <div class="chip"><span class="dot"></span><strong>Labs</strong> 60 minutes, scaffolded</div>
+    </div> -->
+
+    <div class="grid" style="margin-top:14px;">
+      <div class="card">
+        <h2 style="margin-top:0;">Learning outcomes</h2>
+        <ul class="tight">
+          <li>End-to-end understanding of decoder LLM training and inference.</li>
+          <li>Familiarity with architectural design choices in  open models.</li>
+          <li>Understand inference and long-context bottlenecks in practice.</li>
+          <li>Run a minimal post-training pipeline (SFT + preferences).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 style="margin-top:0;">Simon Vary</h2>
+        <p class="small">
+          <!-- Instructor: <strong>Simon Vary</strong><br/> -->
+          Email: <a href="mailto:simon.vary@stats.ox.ac.uk">simon.vary@stats.ox.ac.uk</a><br/>
+          Web: <a href="https://simonvary.github.io">simonvary.github.io</a><br/>
+          Place: Mathematical Institute, Univ. of Oxford
+        </p>
+      </div>
+    </div>
+    <br/>
+    <div class="note">
+          <strong>Bring:</strong> laptop with Python + PyTorch.<br/>
+          <!-- <strong>Optional:</strong> GPU if you already have it. -->
+        </div>
+  </section>
+
+<!-- ===== EDIT: schedule table ===== -->
+  <section id="schedule">
+    <h2>Schedule</h2>
+    <table class="table" aria-label="Course schedule">
+      <thead>
+        <tr>
+          <th style="width:17%">Date</th>
+          <th style="width:14%">Time / Room</th>
+          <th>Lecture</th>
+          <th style="width:14%">Materials</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Wed 4th March</strong></td>
+          <td>15:00–17:00 <br/> L4, MI</td>
+          <td>
+            <strong>1 — simpleGPT: the end-to-end pipeline</strong><br/>
+            Tokenizer, tensors, causal self-attention, basic training loop
+          </td>
+          <td class="small">
+            <!-- <a href="materials/slides/session1.pdf">Slides</a> •
+            <a href="materials/labs/lab1.pdf">Lab</a> -->
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Wed 11th March</strong></td>
+          <td>15:00–17:00 <br/> L4, MI</td>
+          <td>
+            <strong>2 — Architecture design choices / open-weight models</strong><br/>
+            Position encoding (RoPE, YaRN), attention variants (MQA/GQA/MLA), normalization + activation choices
+          </td>
+          <td class="small">
+            <!-- <a href="materials/slides/session2.pdf">Slides</a> •
+            <a href="materials/labs/lab2.pdf">Lab</a> -->
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Wed 18th March</strong></td>
+          <td>15:00–17:00 <br/> L6, MI (TBC)</td>
+          <td>
+            <strong>3 — Inference: KV-cache & long context</strong><br/>
+            Prefill vs decode, KV-cache (compute vs memory), long-context bottlenecks, <em>optional:</em> mechanistic interpretability
+          </td>
+          <td class="small">
+            <!-- <a href="materials/slides/session3.pdf">Slides</a> •
+            <a href="materials/labs/lab3.pdf">Lab</a> -->
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Wed 25th March</strong></td>
+          <td>15:00–17:00 <br/> L4, MI</td>
+          <td>
+            <strong>4 — Post-training: objectives, PEFT, and preferences</strong><br/>
+            SFT, parameter-efficient fine-tuning (LoRA/PEFT), preference learning (DPO), verifier-based rewards (RLVR)
+          </td>
+          <td class="small">
+            <!-- <a href="materials/slides/session4.pdf">Slides</a> •
+            <a href="materials/labs/lab4.pdf">Lab</a> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <p class="small">Put PDFs in <code>materials/slides/</code> and <code>materials/labs/</code> (or replace with external links).</p> -->
+  </section>
+
+  <!-- ===== EDIT: Lectures ===== -->
+  <section id="lectures">
+    <h2>Lectures</h2>
+
+    <div class="card">
+      <h3 class="card-title">Lecture 1 — simpleGPT: the end-to-end pipeline</h3>
+      <ul class="tight">
+        <!-- <li><strong>Lecture:</strong> \(p(x_t|x_{<t})\), NLL, perplexity; attention + causal mask; training loop; sampling.</li>
+        <li><strong>Lab:</strong> run tiny pretraining; implement temperature/top-k; add perplexity logging; “overfit-one-batch” debug.</li>
+        <li><strong>Concept checks:</strong> Why is training parallel but generation sequential? What does perplexity measure?</li> -->
+        <li><strong>References:</strong> Andrej Karpathy: 
+<a href="https://youtu.be/zduSFxRajkE">Let's build the GPT Tokenizer</a>, CS336 Lecture 1 [<a href="https://cs336.stanford.edu/spring2025-lectures/?trace=var/traces/lecture_01.json">slides</a>, <a href="https://youtu.be/SQ3fZ1sAqXI?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_">lecture</a>], <a href="https://tiktokenizer.vercel.app/">tiktokenizer</a></li>
+      </ul>
+    </div>
+
+    <div class="card mt">
+      <h3 class="card-title">Lecture 2 — Architecture design choices / open-weight models</h3>
+      <!-- <ul class="tight">
+        <li><strong>Lecture:</strong> shape contracts \((B,T,d)\), \((B,h,T,d_h)\); absolute vs sinusoidal vs RoPE; RoPE = rotate Q,K.</li>
+        <li><strong>Lab:</strong> implement <code>apply_rope</code> + tests; toggle PE via config; compare on a toy long context.</li>
+        <li><strong>Concept checks:</strong> Where does “position” enter under absolute PE vs RoPE? Why doesn’t RoPE touch V?</li>
+      </ul> -->
+    </div>
+
+    <div class="card mt">
+      <h3 class="card-title">Lecture 3 — Inference: KV-cache & long context</h3>
+      <!-- <ul class="tight">
+        <li><strong>Lecture:</strong> prefill vs decode; KV-cache correctness + memory trade-offs; sampling in decode loop.</li>
+        <li><strong>Lab:</strong> implement KV-cache; cached decode matches naive decode; benchmark tokens/sec; <em>optional</em> sliding window.</li>
+        <li><strong>Concept checks:</strong> What must be cached for exact equivalence? Why does cache grow with context?</li>
+      </ul> -->
+    </div>
+
+    <div class="card mt">
+      <h3 class="card-title">Lecture 4 — Post-training: objectives, PEFT, and preference</h3>
+      <!-- <ul class="tight">
+        <li><strong>Lecture:</strong> SFT as masked NLL on prompt→response; preferences as pairwise supervision; DPO-style objective.</li>
+        <li><strong>Lab:</strong> run SFT on toy instruction set; implement DPO-style loss; <em>optional</em> generate prefs via a simple verifier.</li>
+        <li><strong>Concept checks:</strong> If SFT is still NLL, what changed? Why have a reference model in DPO?</li>
+      </ul>
+    </div> -->
+  </section>
+
+  <!-- <section id="logistics">
+    <h2>Logistics (minimal)</h2>
+    <div class="grid">
+      <div class="card">
+        <h3 class="card-title">Environment</h3>
+        <ul class="tight">
+          <li>Python 3.10+ (3.11 ideal), PyTorch (CPU OK), <code>pytest</code>.</li>
+          <li>Sanity: <code>pytest -q</code></li>
+          <li>Run: <code>python scripts/train_pretrain.py --config configs/train_cpu.yaml</code></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Contingencies</h3>
+        <ul class="tight">
+          <li>Provide <strong>precomputed checkpoints</strong> so everyone can run generation.</li>
+          <li>Provide <strong>precomputed logs</strong> for demos if installs fail.</li>
+          <li>CPU too slow: reduce model size/context/steps; keep mechanics identical.</li>
+        </ul>
+      </div>
+    </div>
+  </section> -->
+
+  <section id="sources">
+    <h2>References</h2>
+    <div class="card">
+      <ul class="tight">
+        <li>Stanford CS336 (Spring 2025): <a href="https://cs336.stanford.edu/spring2025/">cs336.stanford.edu/spring2025/</a></li>
+        <li>nanoGPT (Karpathy): <a href="https://github.com/karpathy/nanoGPT">github.com/karpathy/nanoGPT</a></li>
+      </ul>
+      <!-- <p class="small">Add your starter repo link here: <strong>&lt;your GitHub URL&gt;</strong></p> -->
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      © <span id="year"></span> Simon Vary, LLM Introduction Course (LASR @ MI, University of Oxford).
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
