@@ -82,7 +82,7 @@
           <td>15:00–17:00 <br/> L4, MI</td>
           <td>
             <strong>1 — simpleGPT: the end-to-end pipeline</strong><br/>
-            Tokenizer, tensors, causal self-attention, basic training loop
+            History, tokenizer, tensors, causal self-attention, training, metrics
           </td>
           <td class="small">
             <!-- <a href="materials/slides/session1.pdf">Slides</a> •
@@ -94,7 +94,7 @@
           <td>15:00–17:00 <br/> L4, MI</td>
           <td>
             <strong>2 — Architecture design choices / open-weight models</strong><br/>
-            Position encoding (RoPE, YaRN), attention variants (MQA/GQA/MLA), normalization + activation choices
+            Position encoding (RoPE, YaRN), attention variants (MQA/GQA/MLA), normalization (pre/post layer) + activation choices
           </td>
           <td class="small">
             <!-- <a href="materials/slides/session2.pdf">Slides</a> •
@@ -106,7 +106,7 @@
           <td>15:00–17:00 <br/> L6, MI (TBC)</td>
           <td>
             <strong>3 — Inference: KV-cache & long context</strong><br/>
-            Prefill vs decode, KV-cache (compute vs memory), long-context bottlenecks, <em>optional:</em> mechanistic interpretability
+            Prefill vs decode, KV-cache (compute vs memory), long-context bottlenecks, <em>optional:</em> in-context learning, mixture of experts (MoE)
           </td>
           <td class="small">
             <!-- <a href="materials/slides/session3.pdf">Slides</a> •
@@ -118,7 +118,7 @@
           <td>15:00–17:00 <br/> L4, MI</td>
           <td>
             <strong>4 — Post-training: objectives, PEFT, and preferences</strong><br/>
-            SFT, parameter-efficient fine-tuning (LoRA/PEFT), preference learning (DPO), verifier-based rewards (RLVR)
+            SFT, parameter-efficient fine-tuning (LoRA), preference learning (DPO), verifier-based rewards (RLVR), Chain-of-thought (CoT)
           </td>
           <td class="small">
             <!-- <a href="materials/slides/session4.pdf">Slides</a> •
@@ -141,7 +141,7 @@
         <li><strong>Lab:</strong> run tiny pretraining; implement temperature/top-k; add perplexity logging; “overfit-one-batch” debug.</li>
         <li><strong>Concept checks:</strong> Why is training parallel but generation sequential? What does perplexity measure?</li> -->
         <li><strong>References:</strong> Andrej Karpathy: 
-<a href="https://youtu.be/zduSFxRajkE">Let's build the GPT Tokenizer</a>, CS336 Lecture 1 [<a href="https://cs336.stanford.edu/spring2025-lectures/?trace=var/traces/lecture_01.json">slides</a>, <a href="https://youtu.be/SQ3fZ1sAqXI?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_">lecture</a>], <a href="https://tiktokenizer.vercel.app/">tiktokenizer</a></li>
+<a href="https://youtu.be/zduSFxRajkE">Let's build the GPT Tokenizer</a>, CS336 Lecture 1 [<a href="https://cs336.stanford.edu/spring2025-lectures/?trace=var/traces/lecture_01.json">slides</a>, <a href="https://youtu.be/SQ3fZ1sAqXI?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_">lecture</a>], <a href="https://tiktokenizer.vercel.app/">tiktokenizer</a>, <a href="https://www.cs.utexas.edu/~eunsol/courses/data/bitter_lesson.pdf">Sutton's Bitter Lesson</a></li>
       </ul>
     </div>
 
@@ -164,7 +164,7 @@
     </div>
 
     <div class="card mt">
-      <h3 class="card-title">Lecture 4 — Post-training: objectives, PEFT, and preference</h3>
+      <h3 class="card-title">Lecture 4 — Post-training: objectives, PEFT, and preferences</h3>
       <!-- <ul class="tight">
         <li><strong>Lecture:</strong> SFT as masked NLL on prompt→response; preferences as pairwise supervision; DPO-style objective.</li>
         <li><strong>Lab:</strong> run SFT on toy instruction set; implement DPO-style loss; <em>optional</em> generate prefs via a simple verifier.</li>
