@@ -229,9 +229,10 @@ footer {
 }
 
 .sponsors-logos img {
-  height: 32px;          /* tweak to taste */
+  height: 44px;          /* tweak to taste */
   width: auto;
   display: block;
+  max-width: 260px; /* optional: keep wide logos in check */
   opacity: 0.88;
   filter: grayscale(100%);
   transition: filter 160ms ease, opacity 160ms ease;
