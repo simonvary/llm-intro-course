@@ -1,4 +1,4 @@
-# Lecture 1 Code: Foundations of Large Language Models
+# Lecture 1 Code — simpleGPT: the end-to-end pipeline
 
 This directory contains the practical coding exercises and implementations for Lecture 1.
 
