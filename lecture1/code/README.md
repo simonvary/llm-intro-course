@@ -1,4 +1,4 @@
-# Lecture 1 Code — simpleGPT: the end-to-end pipeline
+# Lecture 1 Code — simpleGPT & basics
 
 This directory contains the practical coding exercises and implementations for Lecture 1.
 
