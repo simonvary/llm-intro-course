@@ -1,19 +1,19 @@
 from utils import load_and_preprocess_data, train_step
-from model import simpleGPT
+from model import MiniGPT
 import tiktoken
 import torch
 import numpy as np
 from tqdm import tqdm
 import os
 
-CHECKPOINT_DIR = "checkpoints"
+CHECKPOINT_DIR = "simpleGPT"
 CHECKPOINT_EVERY = 400
 os.makedirs(CHECKPOINT_DIR, exist_ok=True)
 
-METRICS_PATH = "metrics.npz"
+METRICS_PATH = os.path.join(CHECKPOINT_DIR, "simpleGPT-metrics.npz")
 
 def save_checkpoint(step, model, optimizer, losses, perplexities):
-    path = os.path.join(CHECKPOINT_DIR, f"ckpt_step_{step:06d}.pt")
+    path = os.path.join(CHECKPOINT_DIR, "simpleGPT-ckpt_latest.pt")
     torch.save({
         "step":          step,
         "model":         model.state_dict(),
@@ -21,11 +21,11 @@ def save_checkpoint(step, model, optimizer, losses, perplexities):
         "losses":        losses,
         "perplexities":  perplexities,
     }, path)
-    print(f"[checkpoint] saved at: {path}")
+    print(f"[checkpoint] saved : {path}")
 
 def save_metrics(losses, perplexities):
     np.savez(METRICS_PATH, losses=np.array(losses), perplexities=np.array(perplexities))
-    print(f"[metrics] saved at: {METRICS_PATH}")
+    print(f"[metrics] saved → {METRICS_PATH}")
 
 tokenizer = tiktoken.get_encoding("gpt2")
 
@@ -45,7 +45,7 @@ data_path = 'TinyStories-train.txt'
 
 text_dl = load_and_preprocess_data(data_path, batch_size, maxlen, num_epochs)
 
-model = simpleGPT(
+model = MiniGPT(
     maxlen=maxlen,
     vocab_size=vocab_size,
     embed_dim=embed_dim,
