@@ -20,7 +20,7 @@ Start with the **Jupyter notebooks** to understand the tensor operations and arc
 You can open (and copy for edits) the notebooks via Google Colab:
 - [lecture1-practical1-tensors.ipynb](https://colab.research.google.com/drive/1RBPaYgmuCKPazEpuP5-6nGuRqpvtKNA-?usp=sharing)
 - [lecture1-practical2-model.ipynb](https://colab.research.google.com/drive/1UR9d2ucFvINaQ6Re3ZXlIib-k7tV6Bsa?usp=sharing)
-- [lecture1-practical2-model.ipynb](https://colab.research.google.com/drive/1YVXmpDkj60mTSUG68fcQu8nmPagqPfh4?usp=sharing)
+- [lecture1-practical2-model-solved.ipynb](https://colab.research.google.com/drive/1YVXmpDkj60mTSUG68fcQu8nmPagqPfh4?usp=sharing)
 
 Once you are comfortable with the individual building blocks, transition to the **`simpleGPT` folder** to see how these components are integrated and trained in a continuous loop.
 
