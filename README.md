@@ -23,4 +23,4 @@ A short, four-week, code-first introduction to how modern decoder-only Large Lan
 Please bring a laptop with **Python** and **PyTorch** installed for the guided coding exercises.
 
 ## Instructor
-**Simon Vary** 📧 [simon.vary@stats.ox.ac.uk](mailto:simon.vary@stats.ox.ac.uk) | 🌍
+**Simon Vary** [simon.vary@stats.ox.ac.uk](mailto:simon.vary@stats.ox.ac.uk) | [simonvary.github.io](https://simonvary.github.io/)
