@@ -1,5 +1,5 @@
 from utils import load_and_preprocess_data, train_step
-from model import MiniGPT
+from model import simpleGPT
 import tiktoken
 import torch
 import numpy as np
@@ -45,7 +45,7 @@ data_path = 'TinyStories-train.txt'
 
 text_dl = load_and_preprocess_data(data_path, batch_size, maxlen, num_epochs)
 
-model = MiniGPT(
+model = simpleGPT(
     maxlen=maxlen,
     vocab_size=vocab_size,
     embed_dim=embed_dim,
