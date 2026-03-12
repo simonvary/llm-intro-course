@@ -14,8 +14,8 @@ A short, four-week, introduction to decoder-only Large Language Models (LLMs). S
 
 | Lecture | Date (2026) | Topic | Materials |
 | :--- | :--- | :--- | :--- |
-| **1** | Mar 4 | **simpleGPT & basics**: History, tokenizer, tensors, causal self-attention, training, metrics | [Slides](./lecture1/slides/lecture1_handout.pdf) • [Code](./lecture1/code) |
-| **2** | Mar 11 | **Architecture design choices**: Recap of MHA + Transformer, Position encoding RoPE, normalization (pre/post-norm), dimensions | [Slides](./lecture2/slides/lecture2_handout.pdf) • [Code](./lecture2/code) |
+| **1** | Mar 4 | **simpleGPT & basics**: History, tokenizer, tensors, causal self-attention, training, metrics | [Slides](https://simonvary.github.io/llm-intro-course/lecture1/slides/lecture1_handout.pdf) • [Code](./lecture1/code) |
+| **2** | Mar 11 | **Architecture design choices**: Recap of MHA + Transformer, Position encoding RoPE, normalization (pre/post-norm), dimensions | [Slides](https://simonvary.github.io/llm-intro-course/lecture1/slides/lecture2_handout.pdf) • [Code](./lecture2/code) |
 | **3** | Mar 18 | **Inference & long context**: KV-cache, prefill vs. decode, long-context bottlenecks | |
 | **4** | Mar 25 | **Post-training**: Objectives, PEFT (LoRA), preference learning (DPO), RLVR, CoT |  |
 
