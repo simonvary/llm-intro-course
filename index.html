@@ -103,7 +103,7 @@
         </tr>
         <tr>
           <td><strong>Wed 18th March</strong></td>
-          <td>15:00–17:00 <br/> L6, MI (TBC)</td>
+          <td>15:00–17:00 <br/> L5, MI </td>
           <td>
             <strong>3 — Inference: KV-cache & long context</strong><br/>
             Prefill vs decode, KV-cache (compute vs memory), attention variants (MGA, GQA, MLA),  long-context bottlenecks, speculative decoding 
@@ -134,34 +134,64 @@
     <h2>Lectures</h2>
 
     <div class="card">
-      <h3 class="card-title">Lecture 1 — simpleGPT: the end-to-end pipeline</h3>
-      <ul class="tight">
-        <!-- <li><strong>Lecture:</strong> \(p(x_t|x_{<t})\), NLL, perplexity; attention + causal mask; training loop; sampling.</li>
-        <li><strong>Lab:</strong> run tiny pretraining; implement temperature/top-k; add perplexity logging; “overfit-one-batch” debug.</li>
-        <li><strong>Concept checks:</strong> Why is training parallel but generation sequential? What does perplexity measure?</li> -->
-        <li><strong>References:</strong> Andrej Karpathy: 
-<a href="https://youtu.be/zduSFxRajkE">Let's build the GPT Tokenizer</a>, CS336 Lecture 1 [<a href="https://cs336.stanford.edu/spring2025-lectures/?trace=var/traces/lecture_01.json">slides</a>, <a href="https://youtu.be/SQ3fZ1sAqXI?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_">lecture</a>], <a href="https://tiktokenizer.vercel.app/">tiktokenizer</a>, <a href="https://www.cs.utexas.edu/~eunsol/courses/data/bitter_lesson.pdf">Sutton's Bitter Lesson</a>, <a href="https://gregorygundersen.com/blog/2025/10/01/large-language-models">A History of Large Language Models</a> </li>
-<!-- https://jalammar.github.io/illustrated-transformer/ -->
-      </ul>
+      <h3 class="card-title">Lecture 1 — simpleGPT & basics</h3>
+ <ul>
+  <li><strong>Topics:</strong> A short history of probabilistic language models; Tokenization (BPE); Attention and seq2seq; Transformers and causal self-attention; training, cross-entropy, perplexity.</li>
+
+  <li><strong>Code examples:</strong> Tokenizing text with <code>tiktoken</code>; PyTorch tensor basics; masking and scaled dot-product attention; implementing multi-head self-attention; building a minimal GPT-style model.</li>
+
+  <!-- <li><strong>Concept checks:</strong> Why is training parallel but generation sequential? What does perplexity measure?</li> -->
+
+  <li><strong>References:</strong> Andrej Karpathy:
+    <a href="https://youtu.be/zduSFxRajkE">Let's build the GPT Tokenizer</a>,
+    CS336 Lecture 1
+    [<a href="https://cs336.stanford.edu/spring2025-lectures/?trace=var/traces/lecture_01.json">slides</a>,
+    <a href="https://youtu.be/SQ3fZ1sAqXI?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_">lecture</a>],
+    <a href="https://tiktokenizer.vercel.app/">tiktokenizer</a>,
+    <a href="https://www.cs.utexas.edu/~eunsol/courses/data/bitter_lesson.pdf">Sutton's Bitter Lesson</a>,
+    <a href="https://gregorygundersen.com/blog/2025/10/01/large-language-models">A History of Large Language Models</a>,
+    <a href="https://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a>
+  </li>
+</ul>      
     </div>
 
     <div class="card mt">
       <h3 class="card-title">Lecture 2 — Architecture design choices / open-weight models</h3>
-      <!-- <ul class="tight">
-        <li><strong>Lecture:</strong> shape contracts \((B,T,d)\), \((B,h,T,d_h)\); absolute vs sinusoidal vs RoPE; RoPE = rotate Q,K.</li>
-        <li><strong>Lab:</strong> implement <code>apply_rope</code> + tests; toggle PE via config; compare on a toy long context.</li>
-        <li><strong>Concept checks:</strong> Where does “position” enter under absolute PE vs RoPE? Why doesn’t RoPE touch V?</li>
-      </ul> -->
+      <ul>
+  <li><strong>Topics:</strong> Recap of Transformer + MHA; Positional encodings (RoPE); pre-norm, LayerNorm, RMSNorm; Activations (ReLU, GeLU, GLU, SwiGLU); common design ratios for width, depth, heads, and FFN size.</li>
+
+  <li><strong>Code examples:</strong> Adding RoPE to multi-head attention; Inspecting Qwen, generating text and examining the KV cache.</li>
+
+  <!-- <li><strong>Concept checks:</strong> Why does RoPE make attention depend on relative position? Why is pre-norm more stable than post-norm? Why do modern LLMs often use RMSNorm and SwiGLU?</li> -->
+
+  <li><strong>References:</strong> CS336 Lecture 3 on Architectures
+    [<a href="https://youtu.be/ptFiH_bHnJw">lecture</a>],
+    RoFormer [<a href="https://arxiv.org/abs/2104.09864">paper</a>],
+    On Layer Normalization in the Transformer Architecture [<a href="https://arxiv.org/abs/2002.05202">paper</a>],
+    Scaling Laws for Neural Language Models [<a href="https://arxiv.org/abs/2001.08361">paper</a>]
+    </li>
+</ul>
     </div>
 
-    <div class="card mt">
-      <h3 class="card-title">Lecture 3 — Inference: KV-cache & long context</h3>
-      <!-- <ul class="tight">
-        <li><strong>Lecture:</strong> prefill vs decode; KV-cache correctness + memory trade-offs; sampling in decode loop.</li>
-        <li><strong>Lab:</strong> implement KV-cache; cached decode matches naive decode; benchmark tokens/sec; <em>optional</em> sliding window.</li>
-        <li><strong>Concept checks:</strong> What must be cached for exact equivalence? Why does cache grow with context?</li>
-      </ul> -->
-    </div>
+   <div class="card mt">
+  <h3 class="card-title">Lecture 3 — Inference: KV-cache & long context</h3>
+  <ul>
+    <li><strong>Topics:</strong> Prefill vs decode; inference metrics (TTFT, latency, throughput); KV-cache and MQA, GQA, MLA, CLA; speculative decoding; sparse/local attention; extending context with YaRN.</li>
+
+    <!-- <li><strong>Code examples:</strong> KV-cache size and arithmetic-intensity calculations; comparing MHA and GQA at decode time; speculative decoding as draft-and-verify generation.</li> -->
+
+    <!-- <li><strong>Concept checks:</strong> Why is decode memory-bound? Why does batching help throughput more than latency? How does speculative decoding speed up generation without changing the target distribution?</li> -->
+
+    <li><strong>References:</strong>
+      CS336 Lecture 10 [<a href="https://youtu.be/fcgPYo3OtV0?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_">lecture</a>],
+      GQA [<a href="https://arxiv.org/abs/2305.13245">paper</a>],
+      Speculative Decoding [<a href="https://arxiv.org/abs/2211.17192">paper</a>],
+      MQA [<a href="https://arxiv.org/abs/1911.02150">paper</a>],
+      H<sub>2</sub>O [<a href="https://arxiv.org/abs/2306.14048">paper</a>],
+      YaRN [<a href="https://arxiv.org/abs/2309.00071">paper</a>]
+    </li>
+  </ul>
+</div>
 
     <div class="card mt">
       <h3 class="card-title">Lecture 4 — Post-training: objectives, PEFT, and preferences</h3>
