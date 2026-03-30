@@ -12,13 +12,11 @@
   <div class="container bar">
     <div>
       <div class="title">LLM Introduction Course (MI, University of Oxford)</div>
-      <!-- <div class="subtitle">4 × 2-hour sessions • 60 min lecture + 60 min lab • CPU-first</div> -->
     </div>
     <nav aria-label="Page navigation">
       <a href="#overview">Home</a>
       <a href="#schedule">Schedule</a>
       <a href="#lectures">Lectures</a>
-      <!-- <a href="#logistics">Logistics</a> -->
       <a href="#sources">References</a>
     </nav>
   </div>
@@ -27,7 +25,7 @@
 <main class="container">
 
   <section id="overview">
-    <h1>Hands-on introduction to LLMs</h1>
+    <h1>Introduction to LLMs</h1>
     <p>
       A short four-week introduction to how modern decoder-only LLMs work end-to-end. Students will build a minimal GPT step by step and experiment with open-weight models to understand architecture design choices and post-training objectives. Lectures take an implementation-first approach and include guided coding exercises in PyTorch.
     </p>
@@ -163,7 +161,7 @@
 
   <!-- <li><strong>Concept checks:</strong> Why does RoPE make attention depend on relative position? Why is pre-norm more stable than post-norm? Why do modern LLMs often use RMSNorm and SwiGLU?</li> -->
 
-  <li><strong>References:</strong> CS336 Lecture 3 on Architectures
+  <li><strong>References:</strong> List of open-weight models [<a href="https://docs.google.com/spreadsheets/d/1s2ZHDY6qyy1L-PSNdFyGxbUfx8IMhMGjpBjSNsWYn6o/edit?usp=sharing">Google Sheet</a>], CS336 Lecture 3 on Architectures
     [<a href="https://youtu.be/ptFiH_bHnJw">lecture</a>],
     RoFormer [<a href="https://arxiv.org/abs/2104.09864">paper</a>],
     On Layer Normalization in the Transformer Architecture [<a href="https://arxiv.org/abs/2002.05202">paper</a>],
@@ -192,14 +190,31 @@
   </ul>
 </div>
 
-    <div class="card mt">
-      <h3 class="card-title">Lecture 4 — Post-training: objectives, PEFT, and preferences</h3>
-      <!-- <ul class="tight">
-        <li><strong>Lecture:</strong> SFT as masked NLL on prompt→response; preferences as pairwise supervision; DPO-style objective.</li>
-        <li><strong>Lab:</strong> run SFT on toy instruction set; implement DPO-style loss; <em>optional</em> generate prefs via a simple verifier.</li>
-        <li><strong>References:</strong> InstructGPT [<a href="https://arxiv.org/abs/2203.02155">paper</a>]</li>
-      </ul>
-    </div> -->
+<div class="card mt">
+  <h3 class="card-title">Lecture 4 — Post-training: objectives, PEFT, and preferences</h3>
+  <ul>
+    <li><strong>Topics:</strong> Supervised fine-tuning (SFT), Instruction-tuning datasets; Parameter-efficient fine-tuning; SFT and hallucinations; preference learning and RL (REINFORCE, PPO, DPO, GRPO); chain-of-thought</li>
+
+    <!-- <li><strong>Code examples:</strong> Computing the SFT loss only on assistant tokens; formatting instruction-tuning data; implementing a low-rank LoRA update <code>W = W_0 + BA</code>; comparing fixed-target SFT with sampled-and-scored RL rollouts; simple preference/objective formulations for DPO- and GRPO-style training.</li> -->
+
+    <li><strong>References:</strong>
+      FLAN: Finetuned LM Are Zero-Shot Learners
+      [<a href="https://arxiv.org/abs/2109.01652">paper</a>],
+      InstructGPT
+      [<a href="https://arxiv.org/abs/2203.02155">paper</a>],
+      LoRA
+      [<a href="https://arxiv.org/abs/2106.09685">paper</a>],
+      PPO
+      [<a href="https://arxiv.org/abs/1707.06347">paper</a>],
+      DPO
+      [<a href="https://arxiv.org/abs/2305.18290">paper</a>],
+      DeepSeekMath / GRPO
+      [<a href="https://arxiv.org/abs/2402.03300">paper</a>],
+      CoT Prompting Elicits Reasoning in LLMs
+      [<a href="https://arxiv.org/abs/2201.11903">paper</a>]
+    </li>
+  </ul>
+</div>
   </section>
 
   <!-- <section id="logistics">
